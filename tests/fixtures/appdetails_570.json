@@ -1,0 +1,17 @@
+{
+ "570": {
+  "success": true,
+  "data": {
+   "name": "Dota 2",
+   "is_free": true,
+   "platforms": {
+    "windows": true,
+    "mac": true,
+    "linux": true
+   },
+   "pc_requirements": {
+    "minimum": "<strong>Minimum:</strong><br><ul class=\"bb_ul\"><li><strong>OS *:</strong> Windows 7 or newer<br></li><li><strong>Processor:</strong> Dual core from Intel or AMD at 2.8 GHz<br></li><li><strong>Memory:</strong> 4 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA GeForce 8600/9600GT, ATI/AMD Radeon HD2600/3600<br></li><li><strong>DirectX:</strong> Version 11<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 60 GB available space<br></li><li><strong>Sound Card:</strong> DirectX Compatible</li></ul>"
+   }
+  }
+ }
+}

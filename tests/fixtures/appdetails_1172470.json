@@ -1,0 +1,18 @@
+{
+ "1172470": {
+  "success": true,
+  "data": {
+   "name": "Apex Legends™",
+   "is_free": true,
+   "platforms": {
+    "windows": true,
+    "mac": false,
+    "linux": false
+   },
+   "pc_requirements": {
+    "minimum": "<strong>Minimum:</strong><br><ul class=\"bb_ul\"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> 64-bit Windows 10<br></li><li><strong>Processor:</strong> AMD FX 4350 or Equivalent, Intel Core i3 6300 or Equivalent<br></li><li><strong>Memory:</strong> 6 GB RAM<br></li><li><strong>Graphics:</strong> AMD Radeon™ HD 7790 (2 GB), NVIDIA GeForce® GTX 950<br></li><li><strong>DirectX:</strong> Version 12<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 75 GB available space<br></li><li><strong>Additional Notes:</strong> ~3.8GB for 1 localized language</li></ul>",
+    "recommended": "<strong>Recommended:</strong><br><ul class=\"bb_ul\"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> 64-bit Windows 10<br></li><li><strong>Processor:</strong> Ryzen 5 CPU or Equivalent<br></li><li><strong>Memory:</strong> 8 GB RAM<br></li><li><strong>Graphics:</strong> AMD Radeon™ R9 290, NVIDIA GeForce® GTX 970<br></li><li><strong>DirectX:</strong> Version 12<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 75 GB available space<br></li><li><strong>Additional Notes:</strong> ~3.8GB for 1 localized language</li></ul>"
+   }
+  }
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "252490": {
+  "success": true,
+  "data": {
+   "name": "Rust",
+   "is_free": false,
+   "platforms": {
+    "windows": true,
+    "mac": true,
+    "linux": false
+   },
+   "pc_requirements": {
+    "minimum": "<strong>Minimum:</strong><br><ul class=\"bb_ul\"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows 11 64bit<br></li><li><strong>Processor:</strong> AMD Ryzen 5 1400 or Intel Core i5-6600<br></li><li><strong>Memory:</strong> 12 GB RAM<br></li><li><strong>Graphics:</strong> AMD Radeon RX 470, NVIDIA GeForce GTX 1060, Intel® Arc™ A580<br></li><li><strong>DirectX:</strong> Version 11<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 45 GB available space<br></li><li><strong>Additional Notes:</strong> SSD is highly recommended or expect longer than average load times.</li></ul>",
+    "recommended": "<strong>Recommended:</strong><br><ul class=\"bb_ul\"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows 11 64bit<br></li><li><strong>Processor:</strong> AMD Ryzen 7 3700X or Intel® Core i7-6700K<br></li><li><strong>Memory:</strong> 16 GB RAM<br></li><li><strong>Graphics:</strong> AMD Radeon RX 6600XT, NVIDIA GeForce RTX 3060, Intel Arc B580<br></li><li><strong>DirectX:</strong> Version 12<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 45 GB available space<br></li><li><strong>Additional Notes:</strong> SSD Required</li></ul>"
+   }
+  }
+ }
+}

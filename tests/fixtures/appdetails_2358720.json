@@ -1,0 +1,18 @@
+{
+ "2358720": {
+  "success": true,
+  "data": {
+   "name": "Black Myth: Wukong",
+   "is_free": false,
+   "platforms": {
+    "windows": true,
+    "mac": false,
+    "linux": false
+   },
+   "pc_requirements": {
+    "minimum": "<strong>Minimum:</strong><br><ul class=\"bb_ul\"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows 10 64-bit<br></li><li><strong>Processor:</strong> Intel Core i5-8400 / AMD Ryzen 5 1600<br></li><li><strong>Memory:</strong> 16 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 8GB<br></li><li><strong>DirectX:</strong> Version 11<br></li><li><strong>Storage:</strong> 130 GB available space<br></li><li><strong>Sound Card:</strong> Windows Compatible Audio Device<br></li><li><strong>Additional Notes:</strong> HDD Supported, SSD Recommended. The above specifications were tested with DLSS/FSR/XeSS enabled.</li></ul>",
+    "recommended": "<strong>Recommended:</strong><br><ul class=\"bb_ul\"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows 10 64-bit<br></li><li><strong>Processor:</strong> Intel Core i7-9700 / AMD Ryzen 5 5500<br></li><li><strong>Memory:</strong> 16 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700 XT / INTEL Arc A750<br></li><li><strong>DirectX:</strong> Version 12<br></li><li><strong>Storage:</strong> 130 GB available space<br></li><li><strong>Sound Card:</strong> Windows Compatible Audio Device<br></li><li><strong>Additional Notes:</strong> SSD Required. The above specifications were tested with DLSS/FSR/XeSS enabled.</li></ul>"
+   }
+  }
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "292030": {
+  "success": true,
+  "data": {
+   "name": "The Witcher 3: Wild Hunt — Remastered",
+   "is_free": false,
+   "platforms": {
+    "windows": true,
+    "mac": false,
+    "linux": false
+   },
+   "pc_requirements": {
+    "minimum": "<strong>Minimum:</strong><br><ul class=\"bb_ul\"><li><strong>OS:</strong> 64-bit Windows 11<br></li><li><strong>Processor:</strong> Core i5-8400 / Ryzen 5 2600<br></li><li><strong>Memory:</strong> 12 GB RAM<br></li><li><strong>Graphics:</strong> GeForce GTX 1660 / Radeon RX 5500 XT 8GB / Arc A580<br></li><li><strong>Storage:</strong> 60 SSD GB available space<br></li><li><strong>Additional Notes:</strong> VRAM 6 GB</li></ul>",
+    "recommended": "<strong>Recommended:</strong><br><ul class=\"bb_ul\"><li><strong>OS:</strong> 64-bit Windows 11<br></li><li><strong>Processor:</strong> Intel Core i7 8700K / AMD Ryzen 5 3600X<br></li><li><strong>Memory:</strong> 16 GB RAM<br></li><li><strong>Graphics:</strong> RTX 2060 Super / AMD Radeon RX 6600 XT / Intel Arc B580<br></li><li><strong>Storage:</strong> 60 SSD GB available space<br></li><li><strong>Additional Notes:</strong> VRAM 8 GB</li></ul>"
+   }
+  }
+ }
+}

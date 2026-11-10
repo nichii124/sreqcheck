@@ -1,0 +1,17 @@
+{
+ "730": {
+  "success": true,
+  "data": {
+   "name": "Counter-Strike 2",
+   "is_free": true,
+   "platforms": {
+    "windows": true,
+    "mac": false,
+    "linux": true
+   },
+   "pc_requirements": {
+    "minimum": "<strong>Minimum:</strong><br><ul class=\"bb_ul\"><li><strong>OS:</strong> Windows® 10<br></li><li><strong>Processor:</strong> 4 hardware CPU threads - Intel® Core™ i5 750 or higher<br></li><li><strong>Memory:</strong> 8 GB RAM<br></li><li><strong>Graphics:</strong> Video card must be 1 GB or more and should be a DirectX 11-compatible with support for Shader Model 5.0<br></li><li><strong>DirectX:</strong> Version 11<br></li><li><strong>Storage:</strong> 85 GB available space</li></ul>"
+   }
+  }
+ }
+}

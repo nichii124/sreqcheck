@@ -113,6 +113,7 @@ class CPUEntry:
 class GPUEntry:
     name: str
     score: float
+    vram_gb: float | None   # smallest common variant; None for integrated GPUs
     kind: str
     suggest: bool
     tokens: tuple[str, ...]
@@ -155,6 +156,7 @@ def gpu_table() -> tuple[GPUEntry, ...]:
         GPUEntry(
             name=r["name"],
             score=float(r["score"]),
+            vram_gb=float(r["vram_gb"]) if r.get("vram_gb") else None,
             kind=r["kind"],
             suggest=r.get("suggest") == "1",
             tokens=gpu_tokens(r["name"]),

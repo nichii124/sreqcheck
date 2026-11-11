@@ -1,317 +1,318 @@
 # Approximate relative 3D performance scores (PassMark G3D-like scale, higher is better).
 # Compiled from public benchmark results; expect +/-10-15% error. Edit freely.
+# vram_gb: video memory of the smallest common variant (blank for integrated GPUs, which share system RAM)
 # kind: desktop | laptop | igpu     suggest: 1 = may be offered as an upgrade suggestion
-name,score,kind,suggest
+name,score,vram_gb,kind,suggest
 # ---------------- NVIDIA desktop ----------------
-NVIDIA GeForce 6600 GT,60,desktop,0
-NVIDIA GeForce 7600 GT,120,desktop,0
-NVIDIA GeForce 7800 GTX,200,desktop,0
-NVIDIA GeForce 8600 GT,300,desktop,0
-NVIDIA GeForce 8800 GTS,900,desktop,0
-NVIDIA GeForce 9500 GT,330,desktop,0
-NVIDIA GeForce 9600 GT,800,desktop,0
-NVIDIA GeForce 8800 GT,1300,desktop,0
-NVIDIA GeForce 8800 GTX,1250,desktop,0
-NVIDIA GeForce 9800 GT,1150,desktop,0
-NVIDIA GeForce 9800 GTX,1350,desktop,0
-NVIDIA GeForce GT 240,900,desktop,0
-NVIDIA GeForce GTS 250,1400,desktop,0
-NVIDIA GeForce GTX 260,1800,desktop,0
-NVIDIA GeForce GTX 275,2100,desktop,0
-NVIDIA GeForce GTX 280,2000,desktop,0
-NVIDIA GeForce GTX 285,2200,desktop,0
-NVIDIA GeForce GT 430,700,desktop,0
-NVIDIA GeForce GT 440,900,desktop,0
-NVIDIA GeForce GT 520,330,desktop,0
-NVIDIA GeForce GT 610,400,desktop,0
-NVIDIA GeForce GT 620,450,desktop,0
-NVIDIA GeForce GT 630,700,desktop,0
-NVIDIA GeForce GT 640,1200,desktop,0
-NVIDIA GeForce GT 710,650,desktop,0
-NVIDIA GeForce GT 730,900,desktop,0
-NVIDIA GeForce GTS 450,1900,desktop,0
-NVIDIA GeForce GTX 460,2850,desktop,0
-NVIDIA GeForce GTX 465,2900,desktop,0
-NVIDIA GeForce GTX 470,3200,desktop,0
-NVIDIA GeForce GTX 480,3800,desktop,0
-NVIDIA GeForce GTX 550 Ti,2150,desktop,0
-NVIDIA GeForce GTX 560,3100,desktop,0
-NVIDIA GeForce GTX 560 Ti,3550,desktop,0
-NVIDIA GeForce GTX 570,4000,desktop,0
-NVIDIA GeForce GTX 580,4400,desktop,0
-NVIDIA GeForce GTX 590,4700,desktop,0
-NVIDIA GeForce GTX 645,2500,desktop,0
-NVIDIA GeForce GTX 650,1800,desktop,0
-NVIDIA GeForce GTX 650 Ti,2750,desktop,0
-NVIDIA GeForce GTX 650 Ti Boost,3600,desktop,0
-NVIDIA GeForce GTX 660,4050,desktop,0
-NVIDIA GeForce GTX 660 Ti,4600,desktop,0
-NVIDIA GeForce GTX 670,5300,desktop,0
-NVIDIA GeForce GTX 680,5600,desktop,0
-NVIDIA GeForce GTX 690,6500,desktop,0
-NVIDIA GeForce GTX 745,2300,desktop,0
-NVIDIA GeForce GTX 750,3250,desktop,0
-NVIDIA GeForce GTX 750 Ti,3900,desktop,0
-NVIDIA GeForce GTX 760,4900,desktop,0
-NVIDIA GeForce GTX 770,6000,desktop,0
-NVIDIA GeForce GTX 780,8150,desktop,0
-NVIDIA GeForce GTX 780 Ti,9500,desktop,0
-NVIDIA GeForce GTX Titan,8500,desktop,0
-NVIDIA GeForce GTX Titan Black,9600,desktop,0
-NVIDIA GeForce GTX 950,5350,desktop,0
-NVIDIA GeForce GTX 960,6050,desktop,0
-NVIDIA GeForce GTX 970,9650,desktop,0
-NVIDIA GeForce GTX 980,11200,desktop,0
-NVIDIA GeForce GTX 980 Ti,13400,desktop,0
-NVIDIA GeForce GTX Titan X,13600,desktop,0
-NVIDIA GeForce GT 1030,2700,desktop,0
-NVIDIA GeForce GTX 1050,4900,desktop,0
-NVIDIA GeForce GTX 1050 Ti,6000,desktop,0
-NVIDIA GeForce GTX 1060,10000,desktop,0
-NVIDIA GeForce GTX 1070,13400,desktop,0
-NVIDIA GeForce GTX 1070 Ti,14700,desktop,0
-NVIDIA GeForce GTX 1080,15300,desktop,0
-NVIDIA GeForce GTX 1080 Ti,18500,desktop,0
-NVIDIA Titan Xp,19000,desktop,0
-NVIDIA GeForce GTX 1630,4700,desktop,0
-NVIDIA GeForce GTX 1650,7800,desktop,0
-NVIDIA GeForce GTX 1650 Super,10000,desktop,0
-NVIDIA GeForce GTX 1660,11500,desktop,0
-NVIDIA GeForce GTX 1660 Super,12700,desktop,0
-NVIDIA GeForce GTX 1660 Ti,12800,desktop,0
-NVIDIA GeForce RTX 2060,14000,desktop,0
-NVIDIA GeForce RTX 2060 Super,16500,desktop,0
-NVIDIA GeForce RTX 2070,16300,desktop,0
-NVIDIA GeForce RTX 2070 Super,18200,desktop,0
-NVIDIA GeForce RTX 2080,18800,desktop,0
-NVIDIA GeForce RTX 2080 Super,19600,desktop,0
-NVIDIA GeForce RTX 2080 Ti,21800,desktop,0
-NVIDIA Titan RTX,22500,desktop,0
-NVIDIA GeForce RTX 3050,12800,desktop,1
-NVIDIA GeForce RTX 3060,17000,desktop,1
-NVIDIA GeForce RTX 3060 Ti,20300,desktop,0
-NVIDIA GeForce RTX 3070,22300,desktop,0
-NVIDIA GeForce RTX 3070 Ti,23500,desktop,0
-NVIDIA GeForce RTX 3080,25000,desktop,0
-NVIDIA GeForce RTX 3080 Ti,26800,desktop,0
-NVIDIA GeForce RTX 3090,26500,desktop,0
-NVIDIA GeForce RTX 3090 Ti,29500,desktop,0
-NVIDIA GeForce RTX 4060,19700,desktop,1
-NVIDIA GeForce RTX 4060 Ti,22600,desktop,1
-NVIDIA GeForce RTX 4070,26900,desktop,1
-NVIDIA GeForce RTX 4070 Super,30000,desktop,0
-NVIDIA GeForce RTX 4070 Ti,31500,desktop,0
-NVIDIA GeForce RTX 4070 Ti Super,32000,desktop,0
-NVIDIA GeForce RTX 4080,34600,desktop,0
-NVIDIA GeForce RTX 4080 Super,35000,desktop,0
-NVIDIA GeForce RTX 4090,38500,desktop,0
-NVIDIA GeForce RTX 5050,19000,desktop,1
-NVIDIA GeForce RTX 5060,22500,desktop,1
-NVIDIA GeForce RTX 5060 Ti,25000,desktop,1
-NVIDIA GeForce RTX 5070,30000,desktop,1
-NVIDIA GeForce RTX 5070 Ti,34500,desktop,1
-NVIDIA GeForce RTX 5080,36500,desktop,1
-NVIDIA GeForce RTX 5090,42000,desktop,1
+NVIDIA GeForce 6600 GT,60,0.125,desktop,0
+NVIDIA GeForce 7600 GT,120,0.25,desktop,0
+NVIDIA GeForce 7800 GTX,200,0.25,desktop,0
+NVIDIA GeForce 8600 GT,300,0.25,desktop,0
+NVIDIA GeForce 8800 GTS,900,0.3125,desktop,0
+NVIDIA GeForce 9500 GT,330,0.25,desktop,0
+NVIDIA GeForce 9600 GT,800,0.5,desktop,0
+NVIDIA GeForce 8800 GT,1300,0.5,desktop,0
+NVIDIA GeForce 8800 GTX,1250,0.75,desktop,0
+NVIDIA GeForce 9800 GT,1150,0.5,desktop,0
+NVIDIA GeForce 9800 GTX,1350,0.5,desktop,0
+NVIDIA GeForce GT 240,900,0.5,desktop,0
+NVIDIA GeForce GTS 250,1400,0.5,desktop,0
+NVIDIA GeForce GTX 260,1800,0.875,desktop,0
+NVIDIA GeForce GTX 275,2100,0.875,desktop,0
+NVIDIA GeForce GTX 280,2000,1,desktop,0
+NVIDIA GeForce GTX 285,2200,1,desktop,0
+NVIDIA GeForce GT 430,700,1,desktop,0
+NVIDIA GeForce GT 440,900,0.5,desktop,0
+NVIDIA GeForce GT 520,330,1,desktop,0
+NVIDIA GeForce GT 610,400,1,desktop,0
+NVIDIA GeForce GT 620,450,1,desktop,0
+NVIDIA GeForce GT 630,700,1,desktop,0
+NVIDIA GeForce GT 640,1200,1,desktop,0
+NVIDIA GeForce GT 710,650,1,desktop,0
+NVIDIA GeForce GT 730,900,1,desktop,0
+NVIDIA GeForce GTS 450,1900,1,desktop,0
+NVIDIA GeForce GTX 460,2850,0.75,desktop,0
+NVIDIA GeForce GTX 465,2900,1,desktop,0
+NVIDIA GeForce GTX 470,3200,1.25,desktop,0
+NVIDIA GeForce GTX 480,3800,1.5,desktop,0
+NVIDIA GeForce GTX 550 Ti,2150,1,desktop,0
+NVIDIA GeForce GTX 560,3100,1,desktop,0
+NVIDIA GeForce GTX 560 Ti,3550,1,desktop,0
+NVIDIA GeForce GTX 570,4000,1.25,desktop,0
+NVIDIA GeForce GTX 580,4400,1.5,desktop,0
+NVIDIA GeForce GTX 590,4700,1.5,desktop,0
+NVIDIA GeForce GTX 645,2500,1,desktop,0
+NVIDIA GeForce GTX 650,1800,1,desktop,0
+NVIDIA GeForce GTX 650 Ti,2750,1,desktop,0
+NVIDIA GeForce GTX 650 Ti Boost,3600,2,desktop,0
+NVIDIA GeForce GTX 660,4050,2,desktop,0
+NVIDIA GeForce GTX 660 Ti,4600,2,desktop,0
+NVIDIA GeForce GTX 670,5300,2,desktop,0
+NVIDIA GeForce GTX 680,5600,2,desktop,0
+NVIDIA GeForce GTX 690,6500,2,desktop,0
+NVIDIA GeForce GTX 745,2300,4,desktop,0
+NVIDIA GeForce GTX 750,3250,1,desktop,0
+NVIDIA GeForce GTX 750 Ti,3900,2,desktop,0
+NVIDIA GeForce GTX 760,4900,2,desktop,0
+NVIDIA GeForce GTX 770,6000,2,desktop,0
+NVIDIA GeForce GTX 780,8150,3,desktop,0
+NVIDIA GeForce GTX 780 Ti,9500,3,desktop,0
+NVIDIA GeForce GTX Titan,8500,6,desktop,0
+NVIDIA GeForce GTX Titan Black,9600,6,desktop,0
+NVIDIA GeForce GTX 950,5350,2,desktop,0
+NVIDIA GeForce GTX 960,6050,2,desktop,0
+NVIDIA GeForce GTX 970,9650,4,desktop,0
+NVIDIA GeForce GTX 980,11200,4,desktop,0
+NVIDIA GeForce GTX 980 Ti,13400,6,desktop,0
+NVIDIA GeForce GTX Titan X,13600,12,desktop,0
+NVIDIA GeForce GT 1030,2700,2,desktop,0
+NVIDIA GeForce GTX 1050,4900,2,desktop,0
+NVIDIA GeForce GTX 1050 Ti,6000,4,desktop,0
+NVIDIA GeForce GTX 1060,10000,3,desktop,0
+NVIDIA GeForce GTX 1070,13400,8,desktop,0
+NVIDIA GeForce GTX 1070 Ti,14700,8,desktop,0
+NVIDIA GeForce GTX 1080,15300,8,desktop,0
+NVIDIA GeForce GTX 1080 Ti,18500,11,desktop,0
+NVIDIA Titan Xp,19000,12,desktop,0
+NVIDIA GeForce GTX 1630,4700,4,desktop,0
+NVIDIA GeForce GTX 1650,7800,4,desktop,0
+NVIDIA GeForce GTX 1650 Super,10000,4,desktop,0
+NVIDIA GeForce GTX 1660,11500,6,desktop,0
+NVIDIA GeForce GTX 1660 Super,12700,6,desktop,0
+NVIDIA GeForce GTX 1660 Ti,12800,6,desktop,0
+NVIDIA GeForce RTX 2060,14000,6,desktop,0
+NVIDIA GeForce RTX 2060 Super,16500,8,desktop,0
+NVIDIA GeForce RTX 2070,16300,8,desktop,0
+NVIDIA GeForce RTX 2070 Super,18200,8,desktop,0
+NVIDIA GeForce RTX 2080,18800,8,desktop,0
+NVIDIA GeForce RTX 2080 Super,19600,8,desktop,0
+NVIDIA GeForce RTX 2080 Ti,21800,11,desktop,0
+NVIDIA Titan RTX,22500,24,desktop,0
+NVIDIA GeForce RTX 3050,12800,8,desktop,1
+NVIDIA GeForce RTX 3060,17000,12,desktop,1
+NVIDIA GeForce RTX 3060 Ti,20300,8,desktop,0
+NVIDIA GeForce RTX 3070,22300,8,desktop,0
+NVIDIA GeForce RTX 3070 Ti,23500,8,desktop,0
+NVIDIA GeForce RTX 3080,25000,10,desktop,0
+NVIDIA GeForce RTX 3080 Ti,26800,12,desktop,0
+NVIDIA GeForce RTX 3090,26500,24,desktop,0
+NVIDIA GeForce RTX 3090 Ti,29500,24,desktop,0
+NVIDIA GeForce RTX 4060,19700,8,desktop,1
+NVIDIA GeForce RTX 4060 Ti,22600,8,desktop,1
+NVIDIA GeForce RTX 4070,26900,12,desktop,1
+NVIDIA GeForce RTX 4070 Super,30000,12,desktop,0
+NVIDIA GeForce RTX 4070 Ti,31500,12,desktop,0
+NVIDIA GeForce RTX 4070 Ti Super,32000,16,desktop,0
+NVIDIA GeForce RTX 4080,34600,16,desktop,0
+NVIDIA GeForce RTX 4080 Super,35000,16,desktop,0
+NVIDIA GeForce RTX 4090,38500,24,desktop,0
+NVIDIA GeForce RTX 5050,19000,8,desktop,1
+NVIDIA GeForce RTX 5060,22500,8,desktop,1
+NVIDIA GeForce RTX 5060 Ti,25000,8,desktop,1
+NVIDIA GeForce RTX 5070,30000,12,desktop,1
+NVIDIA GeForce RTX 5070 Ti,34500,16,desktop,1
+NVIDIA GeForce RTX 5080,36500,16,desktop,1
+NVIDIA GeForce RTX 5090,42000,32,desktop,1
 # ---------------- NVIDIA laptop ----------------
-NVIDIA GeForce GT 750M,1300,laptop,0
-NVIDIA GeForce GTX 850M,2700,laptop,0
-NVIDIA GeForce GTX 860M,3100,laptop,0
-NVIDIA GeForce GTX 950M,2900,laptop,0
-NVIDIA GeForce GTX 960M,3650,laptop,0
-NVIDIA GeForce GTX 965M,5100,laptop,0
-NVIDIA GeForce GTX 970M,6900,laptop,0
-NVIDIA GeForce GTX 980M,8200,laptop,0
-NVIDIA GeForce MX130,1800,laptop,0
-NVIDIA GeForce MX150,2600,laptop,0
-NVIDIA GeForce MX250,2700,laptop,0
-NVIDIA GeForce MX330,2800,laptop,0
-NVIDIA GeForce MX350,2900,laptop,0
-NVIDIA GeForce MX450,4200,laptop,0
-NVIDIA GeForce MX550,4200,laptop,0
-NVIDIA GeForce MX570,5500,laptop,0
-NVIDIA GeForce GTX 1050 Mobile,4600,laptop,0
-NVIDIA GeForce GTX 1050 Ti Mobile,6200,laptop,0
-NVIDIA GeForce GTX 1060 Mobile,9400,laptop,0
-NVIDIA GeForce GTX 1070 Mobile,12500,laptop,0
-NVIDIA GeForce GTX 1080 Mobile,14500,laptop,0
-NVIDIA GeForce GTX 1650 Mobile,7600,laptop,0
-NVIDIA GeForce GTX 1650 Ti Mobile,7900,laptop,0
-NVIDIA GeForce GTX 1660 Ti Mobile,11600,laptop,0
-NVIDIA GeForce RTX 2060 Mobile,12500,laptop,0
-NVIDIA GeForce RTX 2070 Mobile,14000,laptop,0
-NVIDIA GeForce RTX 2070 Super Mobile,15000,laptop,0
-NVIDIA GeForce RTX 2080 Mobile,16500,laptop,0
-NVIDIA GeForce RTX 2080 Super Mobile,17000,laptop,0
-NVIDIA GeForce RTX 3050 Laptop GPU,9000,laptop,0
-NVIDIA GeForce RTX 3050 Ti Laptop GPU,9700,laptop,0
-NVIDIA GeForce RTX 3060 Laptop GPU,13500,laptop,0
-NVIDIA GeForce RTX 3070 Laptop GPU,16500,laptop,0
-NVIDIA GeForce RTX 3070 Ti Laptop GPU,18000,laptop,0
-NVIDIA GeForce RTX 3080 Laptop GPU,18000,laptop,0
-NVIDIA GeForce RTX 3080 Ti Laptop GPU,20500,laptop,0
-NVIDIA GeForce RTX 2050,7000,laptop,0
-NVIDIA GeForce RTX 4050 Laptop GPU,14000,laptop,0
-NVIDIA GeForce RTX 4060 Laptop GPU,17000,laptop,0
-NVIDIA GeForce RTX 4070 Laptop GPU,18500,laptop,0
-NVIDIA GeForce RTX 4080 Laptop GPU,26000,laptop,0
-NVIDIA GeForce RTX 4090 Laptop GPU,29000,laptop,0
-NVIDIA GeForce RTX 5060 Laptop GPU,19500,laptop,0
-NVIDIA GeForce RTX 5070 Laptop GPU,21000,laptop,0
-NVIDIA GeForce RTX 5070 Ti Laptop GPU,25000,laptop,0
-NVIDIA GeForce RTX 5080 Laptop GPU,29000,laptop,0
-NVIDIA GeForce RTX 5090 Laptop GPU,32000,laptop,0
+NVIDIA GeForce GT 750M,1300,2,laptop,0
+NVIDIA GeForce GTX 850M,2700,2,laptop,0
+NVIDIA GeForce GTX 860M,3100,2,laptop,0
+NVIDIA GeForce GTX 950M,2900,2,laptop,0
+NVIDIA GeForce GTX 960M,3650,2,laptop,0
+NVIDIA GeForce GTX 965M,5100,2,laptop,0
+NVIDIA GeForce GTX 970M,6900,3,laptop,0
+NVIDIA GeForce GTX 980M,8200,4,laptop,0
+NVIDIA GeForce MX130,1800,2,laptop,0
+NVIDIA GeForce MX150,2600,2,laptop,0
+NVIDIA GeForce MX250,2700,2,laptop,0
+NVIDIA GeForce MX330,2800,2,laptop,0
+NVIDIA GeForce MX350,2900,2,laptop,0
+NVIDIA GeForce MX450,4200,2,laptop,0
+NVIDIA GeForce MX550,4200,2,laptop,0
+NVIDIA GeForce MX570,5500,2,laptop,0
+NVIDIA GeForce GTX 1050 Mobile,4600,2,laptop,0
+NVIDIA GeForce GTX 1050 Ti Mobile,6200,4,laptop,0
+NVIDIA GeForce GTX 1060 Mobile,9400,6,laptop,0
+NVIDIA GeForce GTX 1070 Mobile,12500,8,laptop,0
+NVIDIA GeForce GTX 1080 Mobile,14500,8,laptop,0
+NVIDIA GeForce GTX 1650 Mobile,7600,4,laptop,0
+NVIDIA GeForce GTX 1650 Ti Mobile,7900,4,laptop,0
+NVIDIA GeForce GTX 1660 Ti Mobile,11600,6,laptop,0
+NVIDIA GeForce RTX 2060 Mobile,12500,6,laptop,0
+NVIDIA GeForce RTX 2070 Mobile,14000,8,laptop,0
+NVIDIA GeForce RTX 2070 Super Mobile,15000,8,laptop,0
+NVIDIA GeForce RTX 2080 Mobile,16500,8,laptop,0
+NVIDIA GeForce RTX 2080 Super Mobile,17000,8,laptop,0
+NVIDIA GeForce RTX 3050 Laptop GPU,9000,4,laptop,0
+NVIDIA GeForce RTX 3050 Ti Laptop GPU,9700,4,laptop,0
+NVIDIA GeForce RTX 3060 Laptop GPU,13500,6,laptop,0
+NVIDIA GeForce RTX 3070 Laptop GPU,16500,8,laptop,0
+NVIDIA GeForce RTX 3070 Ti Laptop GPU,18000,8,laptop,0
+NVIDIA GeForce RTX 3080 Laptop GPU,18000,8,laptop,0
+NVIDIA GeForce RTX 3080 Ti Laptop GPU,20500,16,laptop,0
+NVIDIA GeForce RTX 2050,7000,4,laptop,0
+NVIDIA GeForce RTX 4050 Laptop GPU,14000,6,laptop,0
+NVIDIA GeForce RTX 4060 Laptop GPU,17000,8,laptop,0
+NVIDIA GeForce RTX 4070 Laptop GPU,18500,8,laptop,0
+NVIDIA GeForce RTX 4080 Laptop GPU,26000,12,laptop,0
+NVIDIA GeForce RTX 4090 Laptop GPU,29000,16,laptop,0
+NVIDIA GeForce RTX 5060 Laptop GPU,19500,8,laptop,0
+NVIDIA GeForce RTX 5070 Laptop GPU,21000,8,laptop,0
+NVIDIA GeForce RTX 5070 Ti Laptop GPU,25000,12,laptop,0
+NVIDIA GeForce RTX 5080 Laptop GPU,29000,16,laptop,0
+NVIDIA GeForce RTX 5090 Laptop GPU,32000,24,laptop,0
 # ---------------- AMD desktop ----------------
-AMD Radeon HD 2600,250,desktop,0
-AMD Radeon HD 3650,250,desktop,0
-AMD Radeon HD 3850,500,desktop,0
-AMD Radeon HD 3870,600,desktop,0
-AMD Radeon HD 4670,600,desktop,0
-AMD Radeon HD 4770,1000,desktop,0
-AMD Radeon HD 4850,1500,desktop,0
-AMD Radeon HD 4870,1700,desktop,0
-AMD Radeon HD 5450,230,desktop,0
-AMD Radeon HD 5570,750,desktop,0
-AMD Radeon HD 5670,1100,desktop,0
-AMD Radeon HD 5750,1800,desktop,0
-AMD Radeon HD 5770,2000,desktop,0
-AMD Radeon HD 5850,2800,desktop,0
-AMD Radeon HD 5870,3250,desktop,0
-AMD Radeon HD 6450,350,desktop,0
-AMD Radeon HD 6570,950,desktop,0
-AMD Radeon HD 6670,1300,desktop,0
-AMD Radeon HD 6750,1800,desktop,0
-AMD Radeon HD 6770,2000,desktop,0
-AMD Radeon HD 6850,2600,desktop,0
-AMD Radeon HD 6870,3000,desktop,0
-AMD Radeon HD 6950,3500,desktop,0
-AMD Radeon HD 6970,3800,desktop,0
-AMD Radeon HD 7750,2000,desktop,0
-AMD Radeon HD 7770,2550,desktop,0
-AMD Radeon HD 7790,3300,desktop,0
-AMD Radeon HD 7850,3900,desktop,0
-AMD Radeon HD 7870,4500,desktop,0
-AMD Radeon HD 7950,5100,desktop,0
-AMD Radeon HD 7970,5800,desktop,0
-AMD Radeon R7 240,900,desktop,0
-AMD Radeon R7 250,1450,desktop,0
-AMD Radeon R7 260X,2800,desktop,0
-AMD Radeon R7 265,3900,desktop,0
-AMD Radeon R7 370,4300,desktop,0
-AMD Radeon R9 270,4300,desktop,0
-AMD Radeon R9 270X,4700,desktop,0
-AMD Radeon R9 280,5200,desktop,0
-AMD Radeon R9 280X,5900,desktop,0
-AMD Radeon R9 285,5900,desktop,0
-AMD Radeon R9 290,8300,desktop,0
-AMD Radeon R9 290X,8700,desktop,0
-AMD Radeon R9 380,6000,desktop,0
-AMD Radeon R9 380X,6400,desktop,0
-AMD Radeon R9 390,8500,desktop,0
-AMD Radeon R9 390X,8900,desktop,0
-AMD Radeon R9 Fury,9600,desktop,0
-AMD Radeon R9 Fury X,10000,desktop,0
-AMD Radeon R9 Nano,9500,desktop,0
-AMD Radeon RX 460,4000,desktop,0
-AMD Radeon RX 470,7400,desktop,0
-AMD Radeon RX 480,8100,desktop,0
-AMD Radeon RX 550,2900,desktop,0
-AMD Radeon RX 560,4000,desktop,0
-AMD Radeon RX 570,7600,desktop,0
-AMD Radeon RX 580,8700,desktop,0
-AMD Radeon RX 590,9200,desktop,0
-AMD Radeon RX Vega 56,12800,desktop,0
-AMD Radeon RX Vega 64,13800,desktop,0
-AMD Radeon VII,16000,desktop,0
-AMD Radeon RX 5500 XT,9300,desktop,0
-AMD Radeon RX 5600 XT,13600,desktop,0
-AMD Radeon RX 5700,14500,desktop,0
-AMD Radeon RX 5700 XT,16000,desktop,0
-AMD Radeon RX 6400,7100,desktop,0
-AMD Radeon RX 6500 XT,9000,desktop,0
-AMD Radeon RX 6600,15100,desktop,1
-AMD Radeon RX 6600 XT,16800,desktop,0
-AMD Radeon RX 6650 XT,17500,desktop,0
-AMD Radeon RX 6700,18000,desktop,0
-AMD Radeon RX 6700 XT,19500,desktop,0
-AMD Radeon RX 6750 XT,20300,desktop,0
-AMD Radeon RX 6800,22400,desktop,0
-AMD Radeon RX 6800 XT,25000,desktop,0
-AMD Radeon RX 6900 XT,26700,desktop,0
-AMD Radeon RX 6950 XT,28000,desktop,0
-AMD Radeon RX 7600,16900,desktop,1
-AMD Radeon RX 7600 XT,17500,desktop,0
-AMD Radeon RX 7700 XT,22000,desktop,1
-AMD Radeon RX 7800 XT,24600,desktop,1
-AMD Radeon RX 7900 GRE,27000,desktop,0
-AMD Radeon RX 7900 XT,29800,desktop,0
-AMD Radeon RX 7900 XTX,31000,desktop,0
-AMD Radeon RX 9060 XT,22000,desktop,1
-AMD Radeon RX 9070,30000,desktop,1
-AMD Radeon RX 9070 XT,32500,desktop,1
+AMD Radeon HD 2600,250,0.25,desktop,0
+AMD Radeon HD 3650,250,0.25,desktop,0
+AMD Radeon HD 3850,500,0.25,desktop,0
+AMD Radeon HD 3870,600,0.5,desktop,0
+AMD Radeon HD 4670,600,0.5,desktop,0
+AMD Radeon HD 4770,1000,0.5,desktop,0
+AMD Radeon HD 4850,1500,0.5,desktop,0
+AMD Radeon HD 4870,1700,0.5,desktop,0
+AMD Radeon HD 5450,230,0.5,desktop,0
+AMD Radeon HD 5570,750,0.5,desktop,0
+AMD Radeon HD 5670,1100,0.5,desktop,0
+AMD Radeon HD 5750,1800,0.5,desktop,0
+AMD Radeon HD 5770,2000,1,desktop,0
+AMD Radeon HD 5850,2800,1,desktop,0
+AMD Radeon HD 5870,3250,1,desktop,0
+AMD Radeon HD 6450,350,0.5,desktop,0
+AMD Radeon HD 6570,950,0.5,desktop,0
+AMD Radeon HD 6670,1300,1,desktop,0
+AMD Radeon HD 6750,1800,1,desktop,0
+AMD Radeon HD 6770,2000,1,desktop,0
+AMD Radeon HD 6850,2600,1,desktop,0
+AMD Radeon HD 6870,3000,1,desktop,0
+AMD Radeon HD 6950,3500,2,desktop,0
+AMD Radeon HD 6970,3800,2,desktop,0
+AMD Radeon HD 7750,2000,1,desktop,0
+AMD Radeon HD 7770,2550,1,desktop,0
+AMD Radeon HD 7790,3300,1,desktop,0
+AMD Radeon HD 7850,3900,2,desktop,0
+AMD Radeon HD 7870,4500,2,desktop,0
+AMD Radeon HD 7950,5100,3,desktop,0
+AMD Radeon HD 7970,5800,3,desktop,0
+AMD Radeon R7 240,900,1,desktop,0
+AMD Radeon R7 250,1450,1,desktop,0
+AMD Radeon R7 260X,2800,2,desktop,0
+AMD Radeon R7 265,3900,2,desktop,0
+AMD Radeon R7 370,4300,2,desktop,0
+AMD Radeon R9 270,4300,2,desktop,0
+AMD Radeon R9 270X,4700,2,desktop,0
+AMD Radeon R9 280,5200,3,desktop,0
+AMD Radeon R9 280X,5900,3,desktop,0
+AMD Radeon R9 285,5900,2,desktop,0
+AMD Radeon R9 290,8300,4,desktop,0
+AMD Radeon R9 290X,8700,4,desktop,0
+AMD Radeon R9 380,6000,2,desktop,0
+AMD Radeon R9 380X,6400,4,desktop,0
+AMD Radeon R9 390,8500,8,desktop,0
+AMD Radeon R9 390X,8900,8,desktop,0
+AMD Radeon R9 Fury,9600,4,desktop,0
+AMD Radeon R9 Fury X,10000,4,desktop,0
+AMD Radeon R9 Nano,9500,4,desktop,0
+AMD Radeon RX 460,4000,2,desktop,0
+AMD Radeon RX 470,7400,4,desktop,0
+AMD Radeon RX 480,8100,4,desktop,0
+AMD Radeon RX 550,2900,2,desktop,0
+AMD Radeon RX 560,4000,2,desktop,0
+AMD Radeon RX 570,7600,4,desktop,0
+AMD Radeon RX 580,8700,4,desktop,0
+AMD Radeon RX 590,9200,8,desktop,0
+AMD Radeon RX Vega 56,12800,8,desktop,0
+AMD Radeon RX Vega 64,13800,8,desktop,0
+AMD Radeon VII,16000,16,desktop,0
+AMD Radeon RX 5500 XT,9300,4,desktop,0
+AMD Radeon RX 5600 XT,13600,6,desktop,0
+AMD Radeon RX 5700,14500,8,desktop,0
+AMD Radeon RX 5700 XT,16000,8,desktop,0
+AMD Radeon RX 6400,7100,4,desktop,0
+AMD Radeon RX 6500 XT,9000,4,desktop,0
+AMD Radeon RX 6600,15100,8,desktop,1
+AMD Radeon RX 6600 XT,16800,8,desktop,0
+AMD Radeon RX 6650 XT,17500,8,desktop,0
+AMD Radeon RX 6700,18000,10,desktop,0
+AMD Radeon RX 6700 XT,19500,12,desktop,0
+AMD Radeon RX 6750 XT,20300,12,desktop,0
+AMD Radeon RX 6800,22400,16,desktop,0
+AMD Radeon RX 6800 XT,25000,16,desktop,0
+AMD Radeon RX 6900 XT,26700,16,desktop,0
+AMD Radeon RX 6950 XT,28000,16,desktop,0
+AMD Radeon RX 7600,16900,8,desktop,1
+AMD Radeon RX 7600 XT,17500,16,desktop,0
+AMD Radeon RX 7700 XT,22000,12,desktop,1
+AMD Radeon RX 7800 XT,24600,16,desktop,1
+AMD Radeon RX 7900 GRE,27000,16,desktop,0
+AMD Radeon RX 7900 XT,29800,20,desktop,0
+AMD Radeon RX 7900 XTX,31000,24,desktop,0
+AMD Radeon RX 9060 XT,22000,8,desktop,1
+AMD Radeon RX 9070,30000,16,desktop,1
+AMD Radeon RX 9070 XT,32500,16,desktop,1
 # ---------------- AMD laptop ----------------
-AMD Radeon RX 5500M,8000,laptop,0
-AMD Radeon RX 5600M,11500,laptop,0
-AMD Radeon RX 6600M,14000,laptop,0
-AMD Radeon RX 6700M,15500,laptop,0
-AMD Radeon RX 6800M,18000,laptop,0
-AMD Radeon RX 7600S,14500,laptop,0
-AMD Radeon RX 7700S,16500,laptop,0
+AMD Radeon RX 5500M,8000,4,laptop,0
+AMD Radeon RX 5600M,11500,6,laptop,0
+AMD Radeon RX 6600M,14000,8,laptop,0
+AMD Radeon RX 6700M,15500,10,laptop,0
+AMD Radeon RX 6800M,18000,12,laptop,0
+AMD Radeon RX 7600S,14500,8,laptop,0
+AMD Radeon RX 7700S,16500,8,laptop,0
 # ---------------- AMD integrated (APUs, handhelds) ----------------
-AMD Radeon HD 8670D,1150,igpu,0
-AMD Radeon R7 Graphics,1800,igpu,0
-AMD Radeon Vega 3,1100,igpu,0
-AMD Radeon Vega 6,1700,igpu,0
-AMD Radeon Vega 7,2700,igpu,0
-AMD Radeon Vega 8,2400,igpu,0
-AMD Radeon Vega 11,2800,igpu,0
-AMD Radeon 610M,1100,igpu,0
-AMD Radeon 660M,3600,igpu,0
-AMD Radeon 680M,6300,igpu,0
-AMD Radeon 740M,3500,igpu,0
-AMD Radeon 760M,5800,igpu,0
-AMD Radeon 780M,7200,igpu,0
-AMD Radeon 880M,7500,igpu,0
-AMD Radeon 890M,8500,igpu,0
-AMD Custom GPU 0405,5000,igpu,0
-AMD Custom GPU 0932,5000,igpu,0
-Steam Deck GPU,5000,igpu,0
+AMD Radeon HD 8670D,1150,,igpu,0
+AMD Radeon R7 Graphics,1800,,igpu,0
+AMD Radeon Vega 3,1100,,igpu,0
+AMD Radeon Vega 6,1700,,igpu,0
+AMD Radeon Vega 7,2700,,igpu,0
+AMD Radeon Vega 8,2400,,igpu,0
+AMD Radeon Vega 11,2800,,igpu,0
+AMD Radeon 610M,1100,,igpu,0
+AMD Radeon 660M,3600,,igpu,0
+AMD Radeon 680M,6300,,igpu,0
+AMD Radeon 740M,3500,,igpu,0
+AMD Radeon 760M,5800,,igpu,0
+AMD Radeon 780M,7200,,igpu,0
+AMD Radeon 880M,7500,,igpu,0
+AMD Radeon 890M,8500,,igpu,0
+AMD Custom GPU 0405,5000,,igpu,0
+AMD Custom GPU 0932,5000,,igpu,0
+Steam Deck GPU,5000,,igpu,0
 # ---------------- Intel ----------------
-Intel HD Graphics 2000,250,igpu,0
-Intel HD Graphics 3000,400,igpu,0
-Intel HD Graphics 2500,450,igpu,0
-Intel HD Graphics 4000,600,igpu,0
-Intel HD Graphics 4400,700,igpu,0
-Intel HD Graphics 4600,900,igpu,0
-Intel HD Graphics 5000,850,igpu,0
-Intel HD Graphics 5500,850,igpu,0
-Intel HD Graphics 6000,1000,igpu,0
-Intel HD Graphics 520,900,igpu,0
-Intel HD Graphics 530,1050,igpu,0
-Intel HD Graphics 620,1000,igpu,0
-Intel HD Graphics 630,1250,igpu,0
-Intel UHD Graphics 600,450,igpu,0
-Intel UHD Graphics 610,850,igpu,0
-Intel UHD Graphics 620,1050,igpu,0
-Intel UHD Graphics 630,1300,igpu,0
-Intel UHD Graphics 730,1200,igpu,0
-Intel UHD Graphics 750,1500,igpu,0
-Intel UHD Graphics 770,1600,igpu,0
-Intel Iris Pro Graphics 5200,1300,igpu,0
-Intel Iris Pro Graphics 580,1900,igpu,0
-Intel Iris Plus Graphics 640,1700,igpu,0
-Intel Iris Plus Graphics 655,1800,igpu,0
-Intel Iris Plus Graphics G7,2300,igpu,0
-Intel Iris Xe Graphics,2800,igpu,0
-Intel Arc Graphics,5500,igpu,0
-Intel Arc 140V,7000,igpu,0
-Intel Arc 140T,6500,igpu,0
-Intel Arc A310,5500,desktop,0
-Intel Arc A380,6900,desktop,0
-Intel Arc A580,13000,desktop,0
-Intel Arc A750,15500,desktop,1
-Intel Arc A770,16500,desktop,0
-Intel Arc B570,17500,desktop,1
-Intel Arc B580,19500,desktop,1
-Intel Arc A370M,5500,laptop,0
-Intel Arc A730M,11000,laptop,0
-Intel Arc A770M,13000,laptop,0
+Intel HD Graphics 2000,250,,igpu,0
+Intel HD Graphics 3000,400,,igpu,0
+Intel HD Graphics 2500,450,,igpu,0
+Intel HD Graphics 4000,600,,igpu,0
+Intel HD Graphics 4400,700,,igpu,0
+Intel HD Graphics 4600,900,,igpu,0
+Intel HD Graphics 5000,850,,igpu,0
+Intel HD Graphics 5500,850,,igpu,0
+Intel HD Graphics 6000,1000,,igpu,0
+Intel HD Graphics 520,900,,igpu,0
+Intel HD Graphics 530,1050,,igpu,0
+Intel HD Graphics 620,1000,,igpu,0
+Intel HD Graphics 630,1250,,igpu,0
+Intel UHD Graphics 600,450,,igpu,0
+Intel UHD Graphics 610,850,,igpu,0
+Intel UHD Graphics 620,1050,,igpu,0
+Intel UHD Graphics 630,1300,,igpu,0
+Intel UHD Graphics 730,1200,,igpu,0
+Intel UHD Graphics 750,1500,,igpu,0
+Intel UHD Graphics 770,1600,,igpu,0
+Intel Iris Pro Graphics 5200,1300,,igpu,0
+Intel Iris Pro Graphics 580,1900,,igpu,0
+Intel Iris Plus Graphics 640,1700,,igpu,0
+Intel Iris Plus Graphics 655,1800,,igpu,0
+Intel Iris Plus Graphics G7,2300,,igpu,0
+Intel Iris Xe Graphics,2800,,igpu,0
+Intel Arc Graphics,5500,,igpu,0
+Intel Arc 140V,7000,,igpu,0
+Intel Arc 140T,6500,,igpu,0
+Intel Arc A310,5500,4,desktop,0
+Intel Arc A380,6900,6,desktop,0
+Intel Arc A580,13000,8,desktop,0
+Intel Arc A750,15500,8,desktop,1
+Intel Arc A770,16500,8,desktop,0
+Intel Arc B570,17500,10,desktop,1
+Intel Arc B580,19500,12,desktop,1
+Intel Arc A370M,5500,4,laptop,0
+Intel Arc A730M,11000,12,laptop,0
+Intel Arc A770M,13000,16,laptop,0

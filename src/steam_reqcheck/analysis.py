@@ -51,6 +51,7 @@ class ResolvedPart:
     score: float       # CPU index or GPU score
     how: str           # how the score was obtained
     estimated: bool
+    vram_gb: float | None = None   # from the GPU table, when known
 
 
 @dataclass
@@ -145,7 +146,7 @@ class Resolver:
             if m.laptop_penalty:
                 return ResolvedPart(text, entry.name + " (laptop version, estimated)", entry.score * 0.75,
                                     "estimated from the desktop version", True)
-            return ResolvedPart(text, entry.name, entry.score, "benchmark table", False)
+            return ResolvedPart(text, entry.name, entry.score, "benchmark table", False, entry.vram_gb)
         if bm.looks_like_model(q):
             r = self.online.gpu(text)
             if r:
@@ -283,12 +284,64 @@ def _amount_check(kind: str, have: float | None, need: float | None, req_text: s
                  ratio, estimated, hard_blocker=ratio < hard)
 
 
-def _vram_needed(tier: RawTier) -> float | None:
-    explicit = explicit_vram_gb(tier.fields.get("notes", "")) or explicit_vram_gb(tier.fields.get("graphics", ""))
+@dataclass
+class VramNeed:
+    gb: float
+    source: str        # shown in the report, e.g. "GTX 960 has 2 GB"
+    looked_up: bool    # True if it came from the GPU table, not the store page
+
+
+def _plausible_sizes(text: str) -> list[float]:
+    return [s for s in all_sizes_gb(text) if 0.03 <= s <= 48]
+
+
+def vram_requirement(tier: RawTier, resolver: Resolver) -> VramNeed | None:
+    """How much video memory a tier asks for.
+
+    1. An explicit amount on the store page ("VRAM 6 GB", "4GB+ of VRAM").
+    2. Otherwise each listed card: the amount written next to it
+       ("GTX 1060 6GB"), or else that card's memory from the GPU table.
+       As with GPU speed, meeting the easiest listed card is enough, so the
+       smallest amount wins.
+    """
+    if tier.empty:
+        return None
+    gfx = tier.fields.get("graphics", "")
+    explicit = explicit_vram_gb(tier.fields.get("notes", "")) or explicit_vram_gb(gfx)
     if explicit:
-        return explicit
-    sizes = [s for s in all_sizes_gb(tier.fields.get("graphics", "")) if 0.03 <= s <= 48]
-    return min(sizes) if sizes else None
+        return VramNeed(explicit, "listed on the store page", False)
+    if not gfx:
+        return None
+    parts, _ = resolver.gpu_requirement(gfx)
+    candidates: list[tuple[float, bool, ResolvedPart]] = []   # (gb, looked_up, part)
+    for p in parts:
+        sizes = _plausible_sizes(p.text)
+        if sizes:
+            candidates.append((min(sizes), False, p))
+        elif p.vram_gb:
+            candidates.append((p.vram_gb, True, p))
+    if not any(not looked_up for _, looked_up, _ in candidates):
+        # A size that isn't attached to a recognised card, e.g.
+        # "Video card must be 1 GB or more" or "GTX 970, 4 GB".
+        sizes = _plausible_sizes(gfx)
+        if sizes:
+            return VramNeed(min(sizes), "listed on the store page", False)
+    if not candidates:
+        return None
+    gb, looked_up, part = min(candidates, key=lambda c: (c[0], c[1]))
+    if not looked_up:
+        return VramNeed(gb, "listed on the store page", False)
+    source = f"{_short(part.name)} has {fmt_gb(gb)}"
+    if len(candidates) > 1:
+        source += " (the lowest of the listed cards)"
+    return VramNeed(gb, source, True)
+
+
+def _vram_check(have: float | None, need: VramNeed | None, estimated: bool) -> Check:
+    check = _amount_check("vram", have, need.gb if need else None, None, estimated)
+    if need:
+        check.detail += f" · {need.source}"
+    return check
 
 
 def resolve_own_cpu(specs: SystemSpecs, resolver: Resolver, override: str | None) -> ResolvedPart | None:
@@ -341,9 +394,14 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
     ram_have = ram_override if ram_override is not None else specs.ram_installed_gb
     vram_have = vram_override if vram_override is not None else (gpu_info.vram_gb if gpu_info else None)
     vram_shared = False
+    vram_typical = False
     if vram_have is None and gpu_info is not None and gpu_info.integrated and specs.ram_usable_gb:
         vram_have = specs.ram_usable_gb / 2   # iGPUs can borrow roughly half of system RAM
         vram_shared = True
+    elif vram_have is None and gpu and gpu.vram_gb:
+        vram_have = gpu.vram_gb                # couldn't detect it: use the card's usual amount
+        vram_typical = True
+    vram_needs = {name: vram_requirement(tier, resolver) for name, tier in tiers.items()}
 
     components: list[Component] = []
 
@@ -394,11 +452,14 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
 
     # ---------------- VRAM
     vram_disp = (f"{fmt_gb(vram_have)} shared with system RAM" if vram_shared
+                 else f"{fmt_gb(vram_have)} (usual for this card)" if vram_typical
                  else fmt_gb(vram_have) if vram_have else "unknown")
+    vram_est = vram_shared or vram_typical
     components.append(Component(
         "vram", "Video memory", vram_disp,
-        _amount_check("vram", vram_have, _vram_needed(minimum), None, estimated=vram_shared),
-        _amount_check("vram", vram_have, _vram_needed(recommended), None, estimated=vram_shared),
+        _vram_check(vram_have, vram_needs["minimum"], vram_est),
+        _vram_check(vram_have, vram_needs["recommended"], vram_est),
+        yours_estimated=vram_est,
     ))
 
     # ---------------- RAM
@@ -574,7 +635,7 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
         storage_note=storage_note, suggestions=[], notes=notes, has_recommended=has_rec,
         proton_overhead=proton_overhead, cpu_part=cpu, gpu_part=gpu, gpu_info=gpu_info,
     )
-    analysis.suggestions = suggest_upgrades(analysis, resolver, tiers)
+    analysis.suggestions = suggest_upgrades(analysis, resolver, tiers, vram_needs)
     return analysis
 
 
@@ -582,13 +643,15 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
 # Upgrade suggestions
 # --------------------------------------------------------------------------- #
 
-def _cheapest(table, need: float, score_of) -> str | None:
+def _cheapest(table, need: float, score_of, vram: float | None = None) -> str | None:
     """Weakest suggestible part that still meets `need` (as a stand-in for cheapest)."""
-    candidates = sorted((e for e in table if e.suggest and score_of(e) >= need), key=score_of)
+    candidates = sorted((e for e in table if e.suggest and score_of(e) >= need
+                         and (vram is None or (e.vram_gb or 0) >= vram * PASS_RATIO)), key=score_of)
     return _short(candidates[0].name) if candidates else None
 
 
-def suggest_upgrades(a: Analysis, resolver: Resolver, tiers: dict[str, RawTier]) -> list[Suggestion]:
+def suggest_upgrades(a: Analysis, resolver: Resolver, tiers: dict[str, RawTier],
+                     vram_needs: dict[str, VramNeed | None]) -> list[Suggestion]:
     out: list[Suggestion] = []
     laptop = bool(a.specs.is_laptop)
     comps = {c.key: c for c in a.components}
@@ -611,7 +674,8 @@ def suggest_upgrades(a: Analysis, resolver: Resolver, tiers: dict[str, RawTier])
             continue
         need = mine.score / check.ratio
         if key == "gpu":
-            pick = _cheapest(bm.gpu_table(), need * 1.05, lambda e: e.score)
+            vram_need = vram_needs.get(tier_name)
+            pick = _cheapest(bm.gpu_table(), need * 1.05, lambda e: e.score, vram_need.gb if vram_need else None)
             what = "graphics card"
         else:
             pick = _cheapest(bm.cpu_table(), need * 1.05, lambda e: e.index)
@@ -630,7 +694,7 @@ def suggest_upgrades(a: Analysis, resolver: Resolver, tiers: dict[str, RawTier])
     comp = comps["vram"]
     t = target(comp)
     if t:
-        need = _vram_needed(tiers[t[0]])
+        need = vram_needs[t[0]].gb
         gpu_tip = next((s for s in out if s.component == "Graphics"), None)
         if gpu_tip:
             gpu_tip.text += f" Pick one with at least {fmt_gb(need)} of video memory."

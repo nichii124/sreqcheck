@@ -65,6 +65,14 @@ score weights single-thread speed at 65% and all-core speed at 35%, because game
 When a requirement lists alternatives ("GTX 1060 or RX 580"), you pass if you match or beat **either** one. A
 part counts as matching at 95% of the listed part's score.
 
+**Video memory**: if the store page states an amount ("VRAM 6 GB", "GTX 1060 6GB", "4GB+ of VRAM"), that
+amount is used. If the page only names cards, each card's VRAM is looked up in `gpus.csv`. For example, The
+Last Flame's minimum lists only "GTX 960 or R9 380", so it uses the GTX 960's 2 GB. The table stores each card's
+**smallest common variant**: the GTX 960 came with 2 or 4 GB, so it's recorded as 2 GB. That means you're
+never told you lack VRAM for a card the developer named. As with speed, matching the easiest listed card is
+enough. The report says where each number came from ("GTX 960 has 2 GB" or "listed on the store page"). If
+your own card's VRAM can't be detected, the table's value for it is used and marked *(est.)*.
+
 If a part isn't in the tables, it's looked up in **[Blender Open Data](https://opendata.blender.org)**, a public
 benchmark database. Its rendering scores are converted to the bundled scale using the parts the two datasets
 have in common, so these values are rough (typically within about ±20%) and are marked *(est.)*. The downloaded
@@ -103,4 +111,4 @@ python3 -m venv .venv && .venv/bin/pip install -e '.[dev]'
 .venv/bin/python -m pytest
 ```
 
-The tests use saved Steam requirement data for 13 games (`tests/fixtures/`) and need no network access.
+The tests use saved Steam requirement data for 14 games (`tests/fixtures/`) and need no network access.

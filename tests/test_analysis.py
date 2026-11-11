@@ -124,3 +124,33 @@ def test_markdown_report(offline):
     md = to_markdown(run(1091500, make_specs(ram=8), offline))
     assert md.startswith("# Cyberpunk 2077")
     assert "| **Memory** |" in md and "❌" in md
+
+
+def test_the_last_flame_vram(offline):
+    """User's report: VRAM was blank because the page only names GPUs."""
+    a = run(1830970, make_specs(cpu="12th Gen Intel(R) Core(TM) i3-12100F", gpu="NVIDIA GeForce GTX 1650",
+                                vram=4, ram=8), offline)
+    vram = comp(a, "vram")
+    assert vram.minimum.status is Status.PASS and vram.minimum.required == "2 GB"
+    assert "GTX 960 has 2 GB" in vram.minimum.detail
+    assert vram.recommended.status is Status.PASS and vram.recommended.required == "4 GB"
+    assert "GTX 970 has 4 GB" in vram.recommended.detail
+
+
+def test_vram_too_small_from_lookup(offline):
+    a = run(1830970, make_specs(gpu="NVIDIA GeForce GTX 1050", vram=2), offline)
+    vram = comp(a, "vram")
+    assert vram.minimum.status is Status.PASS
+    assert vram.recommended.status is Status.FAIL   # GTX 970 / R9 390X need 4 GB
+
+
+def test_own_vram_from_table_when_not_detected(offline):
+    a = run(1830970, make_specs(), offline, gpu_override="RTX 3060")
+    vram = comp(a, "vram")
+    assert vram.yours.startswith("12 GB") and vram.yours_estimated
+
+
+def test_gpu_suggestion_respects_vram(offline):
+    a = run(1091500, make_specs(gpu="NVIDIA GeForce GTX 1050 Ti", vram=4), offline)
+    tip = next(s for s in a.suggestions if s.component == "Graphics")
+    assert "6 GB" in tip.text

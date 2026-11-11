@@ -1,10 +1,16 @@
 import pytest
 
-from steam_reqcheck.analysis import Resolver, _vram_needed
+from steam_reqcheck.analysis import Resolver, vram_requirement
+from steam_reqcheck.online import OnlineLookup
 from steam_reqcheck.steam import (SteamError, first_size_gb, parse_app_id, parse_game_requirements,
                                   parse_requirements_html, split_alternatives, ssd_requirement)
 
 from conftest import load_game
+
+
+def _vram_needed(tier):
+    need = vram_requirement(tier, Resolver(OnlineLookup(enabled=False)))
+    return need.gb if need else None
 
 
 @pytest.mark.parametrize("text,app_id", [
@@ -86,3 +92,31 @@ def test_prefix_borrowing(offline):
     assert {p.name for p in parts} == {"NVIDIA GeForce GTX 970", "NVIDIA GeForce GTX 980"}
     parts, _ = r.cpu_requirement("Intel Core i5-4460/4590")
     assert {p.name for p in parts} == {"Intel Core i5-4460", "Intel Core i5-4590"}
+
+
+def test_vram_looked_up_when_not_listed():
+    """The Last Flame names only cards: GTX 960 / R9 380 (min), GTX 970 / R9 390X (rec)."""
+    r = Resolver(OnlineLookup(enabled=False))
+    mn, rec = parse_game_requirements(load_game(1830970))
+    need = vram_requirement(mn, r)
+    assert need.gb == 2 and need.looked_up and "GTX 960 has 2 GB" in need.source
+    need = vram_requirement(rec, r)
+    assert need.gb == 4 and need.looked_up and "GTX 970 has 4 GB" in need.source
+
+
+def test_vram_listed_on_page_wins_over_lookup():
+    r = Resolver(OnlineLookup(enabled=False))
+    mn, _ = parse_game_requirements(load_game(292030))   # Witcher 3: "VRAM 6 GB" in notes
+    need = vram_requirement(mn, r)
+    assert need.gb == 6 and not need.looked_up and need.source == "listed on the store page"
+    mn, _ = parse_game_requirements(load_game(1245620))  # Elden Ring: "GTX 1060 3 GB or RX 580 4 GB"
+    need = vram_requirement(mn, r)
+    assert need.gb == 3 and not need.looked_up
+
+
+def test_vram_mixed_listed_and_looked_up():
+    from steam_reqcheck.steam import RawTier
+    r = Resolver(OnlineLookup(enabled=False))
+    tier = RawTier(fields={"graphics": "GTX 1060 6GB / RX 470"})
+    need = vram_requirement(tier, r)   # RX 470 (4 GB) is the easiest listed card
+    assert need.gb == 4 and need.looked_up and "RX 470" in need.source

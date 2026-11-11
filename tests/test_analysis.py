@@ -44,12 +44,6 @@ def test_user_example_ram_meets_minimum_not_recommended(offline):
     assert a.verdict == "Meets minimum"
 
 
-def test_no_vulkan_is_a_hard_blocker(offline):
-    a = run(367520, make_specs(vulkan=False), offline)
-    assert comp(a, "vulkan").minimum.status is Status.FAIL
-    assert a.chance == 0 and a.verdict == "Won't run"
-
-
 def test_borked_is_a_hard_blocker(offline):
     a = run(1245620, make_specs(), offline, tier="borked")
     assert a.chance == 0
@@ -100,9 +94,8 @@ def test_dual_gpu_laptop_uses_the_stronger_gpu(offline):
     from sreqcheck.hardware import GPUInfo
     specs = make_specs(laptop=True)
     specs.gpus = [
-        GPUInfo("Intel Iris Xe Graphics", "intel", integrated=True, vulkan=True, source="test"),
-        GPUInfo("NVIDIA GeForce RTX 3060 Laptop GPU", "nvidia", integrated=False, vram_gb=6, vulkan=True,
-                source="test"),
+        GPUInfo("Intel Iris Xe Graphics", "intel", integrated=True, source="test"),
+        GPUInfo("NVIDIA GeForce RTX 3060 Laptop GPU", "nvidia", integrated=False, vram_gb=6, source="test"),
     ]
     a = run(1091500, specs, offline)
     assert "3060" in comp(a, "gpu").yours
@@ -154,3 +147,8 @@ def test_gpu_suggestion_respects_vram(offline):
     a = run(1091500, make_specs(gpu="NVIDIA GeForce GTX 1050 Ti", vram=4), offline)
     tip = next(s for s in a.suggestions if s.component == "Graphics")
     assert "6 GB" in tip.text
+
+
+def test_no_vulkan_row(offline):
+    a = run(1830970, make_specs(), offline)
+    assert [c.key for c in a.components] == ["os", "cpu", "gpu", "vram", "ram", "storage"]

@@ -117,8 +117,7 @@ def render_specs(specs: SystemSpecs, resolved: dict, console: Console) -> None:
                      f"{specs.ram_usable_gb or 0:.1f} GB usable")
     for i, g in enumerate(specs.gpus):
         kind = "integrated" if g.integrated else "dedicated" if g.integrated is False else "type unknown"
-        vk = {True: f"Vulkan {g.vulkan_version or 'yes'}", False: "no Vulkan", None: "Vulkan unknown"}[g.vulkan]
-        t.add_row(f"GPU {i}", f"{g.name}  ({kind}, VRAM {fmt_gb(g.vram_gb)}, {vk}; via {g.source})")
+        t.add_row(f"GPU {i}", f"{g.name}  ({kind}, VRAM {fmt_gb(g.vram_gb)}; via {g.source})")
         r = resolved.get("gpus", {}).get(i)
         if r:
             t.add_row("", Text(f"→ {r.name}, score {r.score:,.0f} ({r.how})", style="dim"))

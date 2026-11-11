@@ -53,9 +53,9 @@ def test_gpu_detection_merges_sources(monkeypatch):
     specs = hw.SystemSpecs()
     hw._detect_gpus(specs)
     names = {g.name: g for g in specs.gpus}
-    assert names["AMD Radeon RX 6600"].vulkan is True
+    assert names["AMD Radeon RX 6600"].source == "vulkaninfo"
     assert names["AMD Radeon RX 6600"].vram_gb == 8.0
-    assert names["Intel UHD Graphics 620"].vulkan is False  # no Vulkan device for it
+    assert names["Intel UHD Graphics 620"].source == "lspci"  # not reported by vulkaninfo
 
 
 def test_friendly_names():

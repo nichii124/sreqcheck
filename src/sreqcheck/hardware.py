@@ -20,8 +20,6 @@ class GPUInfo:
     vendor: str                    # nvidia | amd | intel | other
     integrated: bool | None = None
     vram_gb: float | None = None
-    vulkan: bool | None = None     # None = couldn't check
-    vulkan_version: str | None = None
     pci_ids: tuple[str, str] | None = None   # (vendor_id, device_id), lowercase hex
     pci_address: str | None = None
     name_ambiguous: bool = False   # e.g. lspci said "RX 6600/6600 XT/6600M"
@@ -334,13 +332,10 @@ def _detect_gpus(specs: SystemSpecs) -> None:
                     and p["address"] not in used_pci), None)
         if pci:
             used_pci.add(pci["address"])
-        ver = re.search(r"(\d+\.\d+\.\d+)", d.get("apiVersion", ""))
         gpus.append(GPUInfo(
             name=friendly_gpu_name(d.get("deviceName", "Unknown GPU")),
             vendor=_VENDORS.get(vid, "other"),
             integrated="INTEGRATED" in d.get("deviceType", ""),
-            vulkan=True,
-            vulkan_version=ver.group(1) if ver else None,
             pci_ids=(vid, did),
             pci_address=pci["address"] if pci else None,
             source="vulkaninfo",
@@ -355,7 +350,6 @@ def _detect_gpus(specs: SystemSpecs) -> None:
             name=name,
             vendor=vendor,
             integrated=integrated,
-            vulkan=False if (vk_out and vk_devices) else None,
             pci_ids=(p["vendor_id"], p["device_id"]),
             pci_address=p["address"],
             name_ambiguous=ambiguous,
@@ -379,7 +373,7 @@ def _detect_gpus(specs: SystemSpecs) -> None:
                 g.vram_gb = _vram_from_sysfs(g.pci_address)
         if g.integrated and g.vram_gb is not None and g.vram_gb < 2.1:
             g.vram_gb = None  # small BIOS carve-out; the iGPU really shares system RAM
-        if g.vram_gb is None and not g.integrated and g.vulkan:
+        if g.vram_gb is None and not g.integrated and g.source == "vulkaninfo":
             need_full = True
     if need_full:
         heaps = _vram_from_vulkaninfo_full()
@@ -391,7 +385,7 @@ def _detect_gpus(specs: SystemSpecs) -> None:
     specs.gpus = gpus
     if not specs.vulkaninfo_available:
         specs.notes.append(
-            "vulkaninfo isn't installed, so Vulkan support couldn't be checked. "
+            "vulkaninfo isn't installed, so GPU names and video memory may be less accurate. "
             "Install your distro's vulkan-tools package."
         )
     if not pci_devices and not shutil.which("lspci"):

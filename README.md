@@ -6,7 +6,7 @@ Checks whether your Linux PC can run a Steam game through Proton. It compares yo
 - which requirements you meet and which you don't, part by part (CPU, GPU, video memory, RAM, storage)
 - an overall verdict: *Won't run*, *Below minimum*, *Meets minimum* or *Meets recommended*
 - the **chance the game runs**, as a percentage with the reasons behind it
-- the game's **ProtonDB** rating, and whether your GPU supports **Vulkan** (Proton needs it)
+- the game's **ProtonDB** rating
 - **upgrade suggestions** for anything that falls short
 - optionally, a saved **Markdown report**
 
@@ -17,8 +17,8 @@ already have them; if not, install them with your package manager:
 
 | Tool | Package | Used for |
 |---|---|---|
-| `vulkaninfo` | `vulkan-tools` | GPU name, Vulkan support, video memory |
-| `lspci` | `pciutils` | finding every GPU (including ones without a Vulkan driver) |
+| `vulkaninfo` | `vulkan-tools` | exact GPU names and video memory |
+| `lspci` | `pciutils` | finding every GPU |
 | `nvidia-smi` | comes with the NVIDIA driver | NVIDIA video memory |
 
 Then install the program:
@@ -90,7 +90,6 @@ All of these show *(est.)* in the report.
 - **0%**: there's a hard blocker:
   - the GPU or CPU is below 35% of the minimum
   - RAM or video memory is below 50% of the minimum
-  - no Vulkan support
   - a non-64-bit system
   - ProtonDB rates the game *Borked* and it has no native Linux version
 - **In between**: each soft shortfall lowers the chance according to how far below the minimum you are. At the

@@ -19,12 +19,11 @@ def load_game(app_id: int) -> Game:
 
 
 def make_specs(cpu="AMD Ryzen 5 5600X 6-Core Processor", gpu="AMD Radeon RX 6600 (RADV NAVI23)",
-               vram=8.0, ram=16.0, vulkan=True, integrated=False, free_gb=500.0, ssd=True,
+               vram=8.0, ram=16.0, integrated=False, free_gb=500.0, ssd=True,
                laptop=False, installed=()):
     return SystemSpecs(
         cpu_name=cpu, cpu_cores=6, cpu_threads=12, ram_usable_gb=ram - 0.4, ram_installed_gb=ram,
-        gpus=[GPUInfo(name=gpu, vendor="amd", integrated=integrated, vram_gb=vram, vulkan=vulkan,
-                      vulkan_version="1.3.274", source="test")],
+        gpus=[GPUInfo(name=gpu, vendor="amd", integrated=integrated, vram_gb=vram, source="test")],
         arch="x86_64", is_64bit=True, is_laptop=laptop, vulkaninfo_available=True,
         libraries=[LibraryInfo("/home/test/.local/share/Steam", free_gb, 1000, ssd, "/dev/nvme0n1p2",
                                set(installed))],

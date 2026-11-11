@@ -358,8 +358,6 @@ def choose_gpu(specs: SystemSpecs, resolver: Resolver, override: str | None
     if override:
         r = resolver.gpu(override)
         info = GPUInfo(name=override, vendor="other", integrated=False, source="--gpu")
-        if specs.gpus:  # keep detected Vulkan status
-            info.vulkan = max((g.vulkan for g in specs.gpus if g.vulkan is not None), default=None)
         return r, info, [(info, r)]
     scored = []
     for g in specs.gpus:
@@ -373,7 +371,7 @@ def choose_gpu(specs: SystemSpecs, resolver: Resolver, override: str | None
 
     def key(item):
         g, r = item
-        return (r.score if r else (1 if g.integrated is False else 0), g.vulkan is True)
+        return r.score if r else (1 if g.integrated is False else 0)
 
     g, r = max(scored, key=key)
     return r, g, scored
@@ -475,24 +473,6 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
         _amount_check("ram", ram_have, first_size_gb(recommended.fields.get("memory", "")), None),
     ))
 
-    # ---------------- Vulkan
-    vk = gpu_info.vulkan if gpu_info else None
-    if vk is None and specs.gpus:
-        vk = True if any(g.vulkan for g in specs.gpus) else None
-    if vk:
-        vk_disp = f"Vulkan {gpu_info.vulkan_version}" if gpu_info and gpu_info.vulkan_version else "supported"
-        vk_check = Check(Status.PASS, "required by Proton", "your GPU supports Vulkan")
-    elif vk is False:
-        vk_disp = "not supported"
-        vk_check = Check(Status.FAIL, "required by Proton",
-                         "no Vulkan driver for your GPU: Proton can't run Windows games without it",
-                         hard_blocker=True)
-    else:
-        vk_disp = "couldn't check"
-        vk_check = Check(Status.UNKNOWN, "required by Proton", "install vulkan-tools so this can be checked")
-    components.append(Component("vulkan", "Vulkan", vk_disp, vk_check,
-                                vk_check if has_rec else Check(Status.NOT_LISTED, "—")))
-
     # ---------------- Storage (reported, but not part of the chance)
     installed_in = [lib for lib in specs.libraries if game.app_id in lib.app_ids]
     best_lib = max(specs.libraries, key=lambda l: l.free_gb, default=None)
@@ -543,7 +523,7 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
         c = comp.minimum
         if comp.key == "storage":
             continue
-        if c.status is Status.UNKNOWN and comp.key in ("cpu", "gpu", "ram", "vulkan"):
+        if c.status is Status.UNKNOWN and comp.key in ("cpu", "gpu", "ram"):
             unknowns.append(comp.label)
         if c.estimated or comp.yours_estimated:
             estimates = True
@@ -586,9 +566,7 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
         reasons.append("meets every minimum requirement")
 
     if unknowns:
-        # Not knowing the CPU/GPU/RAM matters more than not knowing Vulkan
-        # (almost every GPU from the last decade supports it).
-        confidence = "low" if any(u != "Vulkan" for u in unknowns) else "medium"
+        confidence = "low"
         notes.append(f"Couldn't verify: {', '.join(unknowns)}. The chance assumes these are fine.")
     elif estimates:
         confidence = "medium"
@@ -596,10 +574,10 @@ def analyze(game: Game, minimum: RawTier, recommended: RawTier, specs: SystemSpe
         confidence = "high"
 
     # ---------------- verdict
-    core = [c for c in components if c.key in ("os", "cpu", "gpu", "vram", "ram", "vulkan")]
+    core = [c for c in components if c.key in ("os", "cpu", "gpu", "vram", "ram")]
     min_fail = any(c.minimum.status is Status.FAIL for c in core)
     rec_fail = any(c.recommended.status is Status.FAIL for c in core)
-    rec_unknown = any(c.recommended.status is Status.UNKNOWN for c in core if c.key != "vulkan")
+    rec_unknown = any(c.recommended.status is Status.UNKNOWN for c in core)
     if hard:
         verdict, detail = "Won't run", "At least one requirement is far out of reach."
     elif min_fail:
@@ -720,9 +698,6 @@ def suggest_upgrades(a: Analysis, resolver: Resolver, tiers: dict[str, RawTier],
         elif "SSD" in comp.minimum.detail or "hard drive" in comp.minimum.detail:
             out.append(Suggestion(comp.label, "Install the game to a Steam library on an SSD."))
 
-    if comps["vulkan"].minimum.status is Status.FAIL:
-        out.append(Suggestion("Vulkan", "Update your graphics driver (Mesa or NVIDIA). If your GPU is older "
-                                        "than about 2012 it may not support Vulkan at all."))
     if a.proton and a.proton.tier in ("borked", "bronze"):
         out.append(Suggestion("Proton", f"Check {a.proton.url} for reported workarounds and Proton versions "
                                         "that work better (e.g. Proton Experimental or GE-Proton)."))

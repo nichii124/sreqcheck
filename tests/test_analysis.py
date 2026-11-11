@@ -1,6 +1,6 @@
-from steam_reqcheck.analysis import Status, analyze
-from steam_reqcheck.report import to_markdown
-from steam_reqcheck.steam import parse_game_requirements
+from sreqcheck.analysis import Status, analyze
+from sreqcheck.report import to_markdown
+from sreqcheck.steam import parse_game_requirements
 
 from conftest import load_game, make_specs, rating
 
@@ -97,7 +97,7 @@ def test_proton_overhead_option(offline):
 
 
 def test_dual_gpu_laptop_uses_the_stronger_gpu(offline):
-    from steam_reqcheck.hardware import GPUInfo
+    from sreqcheck.hardware import GPUInfo
     specs = make_specs(laptop=True)
     specs.gpus = [
         GPUInfo("Intel Iris Xe Graphics", "intel", integrated=True, vulkan=True, source="test"),

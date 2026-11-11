@@ -1,8 +1,8 @@
 import pytest
 
-from steam_reqcheck.analysis import Resolver, vram_requirement
-from steam_reqcheck.online import OnlineLookup
-from steam_reqcheck.steam import (SteamError, first_size_gb, parse_app_id, parse_game_requirements,
+from sreqcheck.analysis import Resolver, vram_requirement
+from sreqcheck.online import OnlineLookup
+from sreqcheck.steam import (SteamError, first_size_gb, parse_app_id, parse_game_requirements,
                                   parse_requirements_html, split_alternatives, ssd_requirement)
 
 from conftest import load_game
@@ -115,7 +115,7 @@ def test_vram_listed_on_page_wins_over_lookup():
 
 
 def test_vram_mixed_listed_and_looked_up():
-    from steam_reqcheck.steam import RawTier
+    from sreqcheck.steam import RawTier
     r = Resolver(OnlineLookup(enabled=False))
     tier = RawTier(fields={"graphics": "GTX 1060 6GB / RX 470"})
     need = vram_requirement(tier, r)   # RX 470 (4 GB) is the easiest listed card

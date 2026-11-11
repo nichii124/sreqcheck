@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "steam-reqcheck"
+name = "sreqcheck"
 version = "0.1.0"
 description = "Compare your Linux PC with a Steam game's system requirements (for Proton gaming)"
 readme = "README.md"
@@ -18,10 +18,10 @@ dependencies = [
 dev = ["pytest>=7"]
 
 [project.scripts]
-steam-reqcheck = "steam_reqcheck.cli:main"
+sreqcheck = "sreqcheck.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-steam_reqcheck = ["data/*.csv"]
+sreqcheck = ["data/*.csv"]

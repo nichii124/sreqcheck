@@ -1,4 +1,4 @@
-from steam_reqcheck import hardware as hw
+from sreqcheck import hardware as hw
 
 VULKANINFO_SUMMARY = """
 ==========

@@ -7,7 +7,7 @@ scores are converted to the bundled scale with a fit computed against the
 parts that appear in both datasets.  The result is a rough estimate
 (typically within about +/-20%) and is always labelled as such.
 
-Downloaded lists are cached for 30 days in ~/.cache/steam-reqcheck/.
+Downloaded lists are cached for 30 days in ~/.cache/sreqcheck/.
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ def cache_dir() -> Path:
     import os
 
     base = os.environ.get("XDG_CACHE_HOME") or str(Path.home() / ".cache")
-    d = Path(base) / "steam-reqcheck"
+    d = Path(base) / "sreqcheck"
     d.mkdir(parents=True, exist_ok=True)
     return d
 

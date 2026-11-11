@@ -10,7 +10,7 @@ from urllib3.util.retry import Retry
 
 from . import __version__
 
-USER_AGENT = f"steam-reqcheck/{__version__} (system requirements checker; python-requests)"
+USER_AGENT = f"sreqcheck/{__version__} (system requirements checker; python-requests)"
 
 
 @lru_cache(maxsize=1)

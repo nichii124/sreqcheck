@@ -3,10 +3,10 @@ from pathlib import Path
 
 import pytest
 
-from steam_reqcheck.hardware import GPUInfo, LibraryInfo, SystemSpecs
-from steam_reqcheck.online import OnlineLookup
-from steam_reqcheck.protondb import ProtonRating
-from steam_reqcheck.steam import Game
+from sreqcheck.hardware import GPUInfo, LibraryInfo, SystemSpecs
+from sreqcheck.online import OnlineLookup
+from sreqcheck.protondb import ProtonRating
+from sreqcheck.steam import Game
 
 FIXTURES = Path(__file__).parent / "fixtures"
 

@@ -20,7 +20,7 @@ DEFAULT_REPORT_DIR = Path.home() / "steam-reports"
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="steam-reqcheck",
+        prog="sreqcheck",
         description="Compare this Linux PC with a Steam game's Windows system requirements "
                     "(for playing through Proton).",
     )
@@ -70,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
         render_specs(specs, {"cpu": cpu, "gpus": {i: r for i, (_, r) in enumerate(gpus)}}, console)
         if not args.game and not args.specs:
             console.print("\n[dim]Pass a Steam store URL or app ID to check a game, e.g.[/dim] "
-                          "steam-reqcheck https://store.steampowered.com/app/1091500/")
+                          "sreqcheck https://store.steampowered.com/app/1091500/")
         return 0
 
     try:

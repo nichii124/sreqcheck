@@ -130,7 +130,7 @@ def cpu_index(single: float, multi: float) -> float:
 
 
 def _read_csv(filename: str) -> list[dict[str, str]]:
-    text = resources.files("steam_reqcheck.data").joinpath(filename).read_text("utf-8")
+    text = resources.files("sreqcheck.data").joinpath(filename).read_text("utf-8")
     lines = [ln for ln in text.splitlines() if ln.strip() and not ln.lstrip().startswith("#")]
     return list(csv.DictReader(lines))
 

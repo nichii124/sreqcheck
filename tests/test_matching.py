@@ -1,6 +1,6 @@
 import pytest
 
-from steam_reqcheck import benchmarks as bm
+from sreqcheck import benchmarks as bm
 
 
 @pytest.mark.parametrize("name,expected", [

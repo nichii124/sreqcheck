@@ -1,4 +1,4 @@
-# steam-reqcheck
+# sreqcheck
 
 Checks whether your Linux PC can run a Steam game through Proton. It compares your hardware with the game's
 **Windows** system requirements on Steam, checking **Minimum** and **Recommended** separately, and tells you:
@@ -24,17 +24,17 @@ already have them; if not, install them with your package manager:
 Then install the program:
 
 ```bash
-git clone <this repository's URL> steam-reqcheck
-cd steam-reqcheck
+git clone https://github.com/nichii124/sreqcheck
+cd sreqcheck
 pipx install .          # or: python3 -m pip install --user .
 ```
 
 ## Use
 
 ```bash
-steam-reqcheck https://store.steampowered.com/app/1091500/Cyberpunk_2077/
-steam-reqcheck 1091500               # the app ID works too
-steam-reqcheck --specs               # just show what hardware was detected
+sreqcheck https://store.steampowered.com/app/1091500/Cyberpunk_2077/
+sreqcheck 1091500               # the app ID works too
+sreqcheck --specs               # just show what hardware was detected
 ```
 
 After the report, you're asked whether to save it as Markdown. By default it goes in `~/steam-reports/<game>.md`.
@@ -59,7 +59,7 @@ amounts.
 If there is more than one GPU (common on laptops), the strongest one is used. Steam libraries are read from
 `libraryfolders.vdf`, and for each library the program checks free space and whether the drive is an SSD.
 
-**CPUs and GPUs** are compared using benchmark scores in `src/steam_reqcheck/data/cpus.csv` and `gpus.csv`
+**CPUs and GPUs** are compared using benchmark scores in `src/sreqcheck/data/cpus.csv` and `gpus.csv`
 (about 300 of each). The scores are approximate, on a PassMark-like scale, and you can edit the files. The CPU
 score weights single-thread speed at 65% and all-core speed at 35%, because games depend more on per-core speed.
 When a requirement lists alternatives ("GTX 1060 or RX 580"), you pass if you match or beat **either** one. A
@@ -76,7 +76,7 @@ your own card's VRAM can't be detected, the table's value for it is used and mar
 If a part isn't in the tables, it's looked up in **[Blender Open Data](https://opendata.blender.org)**, a public
 benchmark database. Its rendering scores are converted to the bundled scale using the parts the two datasets
 have in common, so these values are rough (typically within about ±20%) and are marked *(est.)*. The downloaded
-data is cached for 30 days in `~/.cache/steam-reqcheck/`.
+data is cached for 30 days in `~/.cache/sreqcheck/`.
 
 Vague requirements are handled as follows:
 - "Intel Core i5 4th gen" or "Ryzen 5" is compared against a typical part from that family.
